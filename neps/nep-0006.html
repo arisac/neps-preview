@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Simple Summary #  A standard interface for tokens.
+Abstract #  The following standard allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party.
+Motivation #  A standard interface allows any tokens on NewChain to be re-used by other applications: from wallets to decentralized exchanges.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Basic Token Standard (NRC-6)" />
+<meta property="og:description" content="Simple Summary #  A standard interface for tokens.
+Abstract #  The following standard allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party.
+Motivation #  A standard interface allows any tokens on NewChain to be re-used by other applications: from wallets to decentralized exchanges." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://arisac.github.io/neps-preview/neps/nep-0006.html" />
+
+<title>Basic Token Standard (NRC-6) | Newton Evolution Proposals</title>
+<link rel="manifest" href="/neps-preview/manifest.json">
+<link rel="icon" href="/neps-preview/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/neps-preview/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/neps-preview/en.search.min.263f14230d258e642a855782319e3651b45efef1623b7f481e91d7d209bd1c6a.js" integrity="sha256-Jj8UIw0ljmQqhVeCMZ42UbRe/vFiO39IHpHX0gm9HGo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/neps-preview"><span>Newton Evolution Proposals</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/neps-preview/neps.html" _target="_blank" rel="noopener">
+        All NEPs
+      </a>
+  </li>
+  
+  <li>
+    <a href="/neps-preview/reviews.html" _target="_blank" rel="noopener">
+        Reviews
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://github.com/newtonproject/NEPs" _target="_blank" rel="noopener">
+        NEPs on Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/neps-preview/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Basic Token Standard (NRC-6)</strong>
+
+  <label for="toc-control">
+    
+    <img src="/neps-preview/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#simple-summary">Simple Summary</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#specification">Specification</a>
+      <ul>
+        <li><a href="#meta-data">Meta Data</a></li>
+        <li><a href="#interaction--functions">Interaction / Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#rationale-optional">Rationale (optional)</a></li>
+    <li><a href="#test-cases-optional">Test Cases (optional)</a></li>
+    <li><a href="#implementation-optional">Implementation (optional)</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#copyright">Copyright</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/neps-preview/neps/nep-0006.html">NEP 6: Basic Token Standard (NRC-6)</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/neps-preview/category/technical.html">Technical</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/neps-preview/status/draft.html">Draft</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/neps-preview/type/nrc.html">NRC</a>
+  </div>
+  
+
+
+  <a href="https://github.com/newtonproject/NEPs/blob/master/neps/nep-0006.md">View on Github (https://github.com/newtonproject/NEPs/blob/master/neps/nep-0006.md)</a>
+
+  <table><tbody>
+    <tr><th>Author</th><td><a href="mailto:liuyong5653@163.com">Yong Liu</a>, <a href="https://github.com/i29">Qu Jianwei</a>, <a href="https://github.com/LiuChaooo">LiuChao</a></td></tr>
+    <tr><th>Discussions To</th><td><a href="https://github.com/newtonproject/NEPs/issues/6" target="_blank">https://github.com/newtonproject/NEPs/issues/6</a></td></tr>
+    <tr><th>Status</th><td>Draft</td></tr>
+    <tr><th>Category</th><td>Technical</td></tr>
+    <tr><th>Created</th><td>2020-04-29</td></tr>
+    <tr><th>Updated</th><td></td></tr>
+  </tbody></table>
+
+  <p><h2 id="simple-summary">
+  Simple Summary
+  <a class="anchor" href="#simple-summary">#</a>
+</h2>
+<p>A standard interface for tokens.</p>
+<h2 id="abstract">
+  Abstract
+  <a class="anchor" href="#abstract">#</a>
+</h2>
+<p>The following standard allows for the implementation of a standard API for tokens within smart contracts. This standard provides basic functionality to transfer tokens, as well as allow tokens to be approved so they can be spent by another on-chain third party.</p>
+<h2 id="motivation">
+  Motivation
+  <a class="anchor" href="#motivation">#</a>
+</h2>
+<p>A standard interface allows any tokens on NewChain to be re-used by other applications: from wallets to decentralized exchanges.</p>
+<h2 id="specification">
+  Specification
+  <a class="anchor" href="#specification">#</a>
+</h2>
+<h3 id="meta-data">
+  Meta Data
+  <a class="anchor" href="#meta-data">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Item</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Behaviors/Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">Name of token</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">symbol</td>
+<td style="text-align:left">Symbol of token</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">decimals</td>
+<td style="text-align:left">decimals of Token</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">totalSupply</td>
+<td style="text-align:left">Total supply of Token</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="interaction--functions">
+  Interaction / Functions
+  <a class="anchor" href="#interaction--functions">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Function</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Behaviors/Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">transfer(recipient, amount)</td>
+<td style="text-align:left">Moves <code>amount</code> tokens from the caller&rsquo;s account to <code>recipient</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">approve(spender, amount)</td>
+<td style="text-align:left">Sets <code>amount</code> as the allowance of <code>spender</code> over the caller&rsquo;s tokens</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">transferFrom(sender, recipient, amount)</td>
+<td style="text-align:left">Moves <code>amount</code> tokens from <code>sender</code> to <code>recipient</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Query</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">balanceOf(account)</td>
+<td style="text-align:left">Returns the amount of tokens owned by <code>account</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">allowance(owner, spender)</td>
+<td style="text-align:left">Returns the remaining number of tokens that <code>spender</code> is allowed to spend from <code>owner</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Events</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">Transfer(from, to, value)</td>
+<td style="text-align:left">Emitted when <code>value</code> tokens are moved from one account (<code>from</code>) to another (<code>to</code>).</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Approval(owner, spender, value)</td>
+<td style="text-align:left">Emitted when the allowance of a <code>spender</code> for an <code>owner</code> is set by a call to {approve}</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="rationale-optional">
+  Rationale (optional)
+  <a class="anchor" href="#rationale-optional">#</a>
+</h2>
+<p>TBD</p>
+<h2 id="test-cases-optional">
+  Test Cases (optional)
+  <a class="anchor" href="#test-cases-optional">#</a>
+</h2>
+<p>TBD</p>
+<h2 id="implementation-optional">
+  Implementation (optional)
+  <a class="anchor" href="#implementation-optional">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">interface</span> INRC6 {
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Returns the amount of tokens in existence.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">function</span> totalSupply() <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint256</span>);
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Returns the amount of tokens owned by `account`.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">function</span> balanceOf(<span style="color:#66d9ef">address</span> account) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint256</span>);
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Moves `amount` tokens from the caller&#39;s account to `recipient`.
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * Returns a boolean value indicating whether the operation succeeded.
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * Emits a {Transfer} event.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">function</span> transfer(<span style="color:#66d9ef">address</span> recipient, <span style="color:#66d9ef">uint256</span> amount) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>);
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Returns the remaining number of tokens that `spender` will be
+</span><span style="color:#75715e">     * allowed to spend on behalf of `owner` through {transferFrom}. This is
+</span><span style="color:#75715e">     * zero by default.
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * This value changes when {approve} or {transferFrom} are called.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">function</span> allowance(<span style="color:#66d9ef">address</span> owner, <span style="color:#66d9ef">address</span> spender) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint256</span>);
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Sets `amount` as the allowance of `spender` over the caller&#39;s tokens.
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * Returns a boolean value indicating whether the operation succeeded.
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * IMPORTANT: Beware that changing an allowance with this method brings the risk
+</span><span style="color:#75715e">     * that someone may use both the old and the new allowance by unfortunate
+</span><span style="color:#75715e">     * transaction ordering. One possible solution to mitigate this race
+</span><span style="color:#75715e">     * condition is to first reduce the spender&#39;s allowance to 0 and set the
+</span><span style="color:#75715e">     * desired value afterwards:
+</span><span style="color:#75715e">     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * Emits an {Approval} event.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">function</span> approve(<span style="color:#66d9ef">address</span> spender, <span style="color:#66d9ef">uint256</span> amount) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>);
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Moves `amount` tokens from `sender` to `recipient` using the
+</span><span style="color:#75715e">     * allowance mechanism. `amount` is then deducted from the caller&#39;s
+</span><span style="color:#75715e">     * allowance.
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * Returns a boolean value indicating whether the operation succeeded.
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * Emits a {Transfer} event.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">function</span> transferFrom(<span style="color:#66d9ef">address</span> sender, <span style="color:#66d9ef">address</span> recipient, <span style="color:#66d9ef">uint256</span> amount) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>);
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Emitted when `value` tokens are moved from one account (`from`) to
+</span><span style="color:#75715e">     * another (`to`).
+</span><span style="color:#75715e">     *
+</span><span style="color:#75715e">     * Note that `value` may be zero.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">event</span> Transfer(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> _from, <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> _to, <span style="color:#66d9ef">uint256</span> _value);
+
+    <span style="color:#75715e">/**
+</span><span style="color:#75715e">     * @dev Emitted when the allowance of a `spender` for an `owner` is set by
+</span><span style="color:#75715e">     * a call to {approve}. `value` is the new allowance.
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#66d9ef">event</span> Approval(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> _owner, <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> _spender, <span style="color:#66d9ef">uint256</span> _value);
+}
+</code></pre></div><h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<ul>
+<li>ERC-20 <a href="https://eips.ethereum.org/EIPS/eip-20">https://eips.ethereum.org/EIPS/eip-20</a></li>
+</ul>
+<h2 id="copyright">
+  Copyright
+  <a class="anchor" href="#copyright">#</a>
+</h2>
+<p>Copyright and related rights waived via 
+<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0</a>.</p>
+</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#simple-summary">Simple Summary</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#specification">Specification</a>
+      <ul>
+        <li><a href="#meta-data">Meta Data</a></li>
+        <li><a href="#interaction--functions">Interaction / Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#rationale-optional">Rationale (optional)</a></li>
+    <li><a href="#test-cases-optional">Test Cases (optional)</a></li>
+    <li><a href="#implementation-optional">Implementation (optional)</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#copyright">Copyright</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

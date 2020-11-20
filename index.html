@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+	<meta name="generator" content="Hugo 0.78.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Welcome to NEPs #   
+Newton Evolution Proposals (NEPs) describe Proposals for the Newton Project including Economic Model, Personnel, Technical, Community Governance and Business.
+We welcome anyone with suggestions related to Newton Project to compile a NEP.
+Contributing a NEP #   Review NEP-0 and guidelines in this document. Fork the repository by clicking &ldquo;Fork&rdquo; in the top right. Add your NEP to your fork of the repository.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Home" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://arisac.github.io/neps-preview/" />
+
+<title>Home | Newton Evolution Proposals</title>
+<link rel="manifest" href="/neps-preview/manifest.json">
+<link rel="icon" href="/neps-preview/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/neps-preview/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/neps-preview/en.search.min.263f14230d258e642a855782319e3651b45efef1623b7f481e91d7d209bd1c6a.js" integrity="sha256-Jj8UIw0ljmQqhVeCMZ42UbRe/vFiO39IHpHX0gm9HGo="></script>
+<link rel="alternate" type="application/rss+xml" href="http://arisac.github.io/neps-preview/index.xml" title="Newton Evolution Proposals" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/neps-preview"><span>Newton Evolution Proposals</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/neps-preview/neps.html" _target="_blank" rel="noopener">
+        All NEPs
+      </a>
+  </li>
+  
+  <li>
+    <a href="/neps-preview/reviews.html" _target="_blank" rel="noopener">
+        Reviews
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://github.com/newtonproject/NEPs" _target="_blank" rel="noopener">
+        NEPs on Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/neps-preview/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Home</strong>
+
+  <label for="toc-control">
+    
+    <img src="/neps-preview/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#contributing-a-nep">Contributing a NEP</a></li>
+    <li><a href="#nep-work-flow">NEP Work Flow</a>
+      <ul>
+        <li><a href="#shepherding-a-nep">Shepherding a NEP</a></li>
+        <li><a href="#nep-process">NEP Process</a></li>
+      </ul>
+    </li>
+    <li><a href="#nep-formats-and-templates">NEP Formats and Templates</a>
+      <ul>
+        <li><a href="#auxiliary-files">Auxiliary Files</a></li>
+        <li><a href="#nep-header-preamble">NEP Header Preamble</a></li>
+        <li><a href="#nep-templates">NEP Templates</a></li>
+      </ul>
+    </li>
+    <li><a href="#transferring-nep-ownership">Transferring NEP Ownership</a></li>
+    <li><a href="#nep-editors">NEP Editors</a>
+      <ul>
+        <li><a href="#nep-editors-responsibilities">NEP Editors Responsibilities</a></li>
+      </ul>
+    </li>
+    <li><a href="#about-this-guideline">About This Guideline</a></li>
+    <li><a href="#copyright">Copyright</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="welcome-to-neps">
+  Welcome to NEPs
+  <a class="anchor" href="#welcome-to-neps">#</a>
+</h1>
+<p>
+<a href="https://gitter.im/newtonproject/NEPs?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge" target="_blank"><img src="https://badges.gitter.im/newtonproject/NEPs.svg" alt="Join the chat at https://gitter.im/newtonproject/NEPs" /></a></p>
+<p>Newton Evolution Proposals (NEPs) describe Proposals for the Newton Project including Economic Model, Personnel, Technical, Community Governance and Business.</p>
+<p>We welcome anyone with suggestions related to Newton Project to compile a NEP.</p>
+<h2 id="contributing-a-nep">
+  Contributing a NEP
+  <a class="anchor" href="#contributing-a-nep">#</a>
+</h2>
+<ol>
+<li>Review 
+<a href="/neps-preview/neps/nep-0000.html">NEP-0</a> and guidelines in this document.</li>
+<li>Fork the repository by clicking &ldquo;Fork&rdquo; in the top right.</li>
+<li>Add your NEP to your fork of the repository. Use a template to start your NEP.</li>
+<li>Submit a Pull Request to Newton&rsquo;s NEPs repository.</li>
+</ol>
+<p><strong>Your first PR</strong> should be a first draft of the NEP. It must meet the formatting criteria. An editor will manually review the first PR for a new NEP and assign it a number before merging it. Make sure you include a <code>Discussions to</code> header with the URL to a discussion forum or open GitHub issue where people can discuss the NEP as a whole.</p>
+<p>Once your first PR is merged, it will be merged to draft NEPs. For this to work, it has to be able to tell that you own the draft being edited. Make sure that the &lsquo;author&rsquo; line of your NEP contains either your GitHub username or your email address inside . If you use your email address, that address must be the one publicly shown on your 
+<a href="https://github.com/settings/profile" target="_blank">your GitHub profile</a>.</p>
+<p><strong>To update a draft NEP</strong>, you need to created another PR after edit. Once the PR is merged, your updated draft NEP will be merged to draft NEPs.</p>
+<p><strong>Finalize a draft NEP</strong>: When you believe your NEP is mature and ready to progress past the Draft phase to Final, you should do:</p>
+<p>Open an issue to request for make the NEP Final. An editor will review your request and ask if anyone objects to its being finalised. If the editor decides there is no rough consensus - for instance, because contributors point out significant issues with the NEP - they may close the issue and request that you fix the issues in the draft before trying again.</p>
+<p>If your request for finalised a NEP has been approved, an editor will change the NEP status to Public Call for anyone to check it can be a Final NEP. Once the Public Call period has passed. An editor will update the status to Final.</p>
+<h2 id="nep-work-flow">
+  NEP Work Flow
+  <a class="anchor" href="#nep-work-flow">#</a>
+</h2>
+<h3 id="shepherding-a-nep">
+  Shepherding a NEP
+  <a class="anchor" href="#shepherding-a-nep">#</a>
+</h3>
+<p>Parties involved in the process are you, the champion or <em>NEP author</em>, the 
+<a href="#nep-editors"><em>NEP editors</em></a>.</p>
+<p>Before you begin writing a formal NEP, you should vet your idea. Ask the Newton community first if an idea is original to avoid wasting time on something that will be be rejected based on prior research.</p>
+<p>In addition to making sure your idea is original, it will be your role as the author to make your idea clear to reviewers and interested parties, as well as inviting editors, developers and community to give feedback. You should try and gauge whether the interest in your NEP is commensurate with both the work involved in implementing it and how many parties will have to conform to it. Negative community feedback will be taken into consideration and may prevent your NEP from moving past the Draft stage.</p>
+<h3 id="nep-process">
+  NEP Process
+  <a class="anchor" href="#nep-process">#</a>
+</h3>
+<p>Following is the process that a successful NEP will move along:</p>
+<pre><code>[ WIP ] -&gt; [ DRAFT ] -&gt; [ PUBLIC CALL ] -&gt; [ FINAL / ACTIVE ]
+</code></pre><p>Each status change is requested by the NEP author and reviewed by the NEP editors. Use a pull request to update the status. Please include a link to where people should continue discussing your NEP. The NEP editors will process these requests as per the conditions below.</p>
+<ul>
+<li><strong>WIP</strong>: Work In Progress is the status before a NEP is submitted to Newton for review. The champion can use other status name such as an <em>IDEA</em> to share the NEP for discussion outside Newton&rsquo;s Github repository.
+<ul>
+<li>:arrow_right: Draft: Once the champion has finished a NEP and consider it&rsquo;s ready to be merged to Newton&rsquo;s Github repository. they will write a draft NEP as a [pull request]. Consider including an implementation if this will aid people in studying the NEP.</li>
+</ul>
+</li>
+<li><strong>Draft</strong>: If the draft is agreeable amount the Newton community, NEP editor will assign the NEP a number (generally the issue or PR number related to the NEP) and merge your pull request. The NEP editor will not unreasonably deny an NEP.
+<ul>
+<li>Once the first draft has been merged, you may submit follow-up pull requests with further changes to your draft until such point as you believe the NEP to be mature and ready to proceed to the next status.</li>
+<li>:arrow_right: Public Call: If agreeable, the NEP editor will assign Public Call status and set a review end date (<code>review-period-end</code>), normally 14 days later.</li>
+<li>:x: Public Call: A request for Public Call status will be denied if material changes are still expected to be made to the draft. We hope that NEPs only enter Public Call once, so as to avoid unnecessary resource.</li>
+</ul>
+</li>
+<li><strong>Public Call</strong>: This NEP will listed prominently on the <a href="https://newtonproject.org/nep">https://newtonproject.org/nep</a> website.
+<ul>
+<li>:x: A Public Call which results in material changes or substantial unaddressed technical complaints will cause the NEP to revert to Draft.</li>
+<li>:arrow_right: Final: A successful Public Call without material changes or unaddressed technical complaints will become Final.</li>
+</ul>
+</li>
+<li><strong>Final</strong>: This NEP represents the current state-of-the-art. A Final NEP should only be updated to correct errata.</li>
+</ul>
+<p>Other exceptional statuses include:</p>
+<ul>
+<li><strong>Implemented</strong>: Some NEP is required one-time only implementation to meets the NEP&rsquo;s to be completed. Once the implementation is complete, the status will be changed to &ldquo;Implemented&rdquo; by an editor. Only NEPs with status &ldquo;Final&rdquo; can be changed to &ldquo;Implemented&rdquo;.</li>
+<li><strong>Active</strong>: Some Informational and Process NEP may also have a status of “Active” if they are never meant to be completed.</li>
+<li><strong>Abandoned</strong>: This NEP is no longer pursued by the original authors or it may not be a preferred option anymore.
+<ul>
+<li>:arrow_right: Draft: Authors or new champions wishing to pursue this NEP can ask for changing it to Draft status.</li>
+</ul>
+</li>
+<li><strong>Rejected</strong>: An NEP that is fundamentally broken. An NEP cannot move on from this state.</li>
+<li><strong>Superseded</strong>: An NEP which was previously Final but is no longer considered state-of-the-art. Another NEP will be in Final status and reference the Superseded NEP. An NEP cannot move on from this state.</li>
+</ul>
+<h2 id="nep-formats-and-templates">
+  NEP Formats and Templates
+  <a class="anchor" href="#nep-formats-and-templates">#</a>
+</h2>
+<p>NEPs should be written in [markdown] format.</p>
+<h3 id="auxiliary-files">
+  Auxiliary Files
+  <a class="anchor" href="#auxiliary-files">#</a>
+</h3>
+<p>If your NEP requires images, the image files should be included in a subdirectory of the assets folder for that NEP as follows: assets/nep-N (where N is to be replaced with the NEP number). When linking to an image in the NEP, use relative links such as ../assets/nep-N/image.png. Other files should follow the same pattern.</p>
+<h3 id="nep-header-preamble">
+  NEP Header Preamble
+  <a class="anchor" href="#nep-header-preamble">#</a>
+</h3>
+<ul>
+<li>
+<p><code>NEP</code>: NEP number (this is determined by the NEP editor)</p>
+</li>
+<li>
+<p><code>Title</code>: NEP title</p>
+</li>
+<li>
+<p><code>Author</code>: a list of the author’s or authors’ name(s) and/or username(s), or name(s) and email(s). Details are below.</p>
+</li>
+<li>
+<p><code>NEP</code>: NEP number (this is determined by the NEP editor)</p>
+</li>
+<li>
+<p><code>Type</code>: NEP currently has 3 types: Standard Track, NRC, Informational</p>
+</li>
+<li>
+<p><code>Category</code>: NEP currently has 5 categories: Economic Model, Personnel, Technical, Community Governance, Business</p>
+</li>
+<li>
+<p><code>Discussions to</code>: While an NEP is a draft, a discussions-to header will indicate the mailing list or URL where the NEP is being discussed.</p>
+<ul>
+<li>
+<p>No <code>Discussions to</code> header is necessary if the NEP is being discussed privately with the author.</p>
+</li>
+<li>
+<p><code>Discussions to</code> cannot point to GitHub pull requests.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>Status</code>: WIP, Draft, Public Call, Final etc.</p>
+</li>
+<li>
+<p><code>Created</code>: yyyy-mm-dd</p>
+</li>
+<li>
+<p><code>Updated</code>: comma separated list of dates</p>
+</li>
+</ul>
+<h3 id="nep-templates">
+  NEP Templates
+  <a class="anchor" href="#nep-templates">#</a>
+</h3>
+<ul>
+<li>
+<a href="nep-template-nrc.md">NEP Template for Token (NRC)</a></li>
+</ul>
+<h2 id="transferring-nep-ownership">
+  Transferring NEP Ownership
+  <a class="anchor" href="#transferring-nep-ownership">#</a>
+</h2>
+<p>It occasionally becomes necessary to transfer ownership of NEPs to a new champion. In general, we’d like to retain the original author as a co-author of the transferred NEP, but that’s really up to the original author. A good reason to transfer ownership is because the original author no longer has the time or interest in updating it or following through with the NEP process, or has fallen off the face of the net (i.e. is unreachable or isn’t responding to email). A bad reason to transfer ownership is because you don’t agree with the direction of the NEP. We try to build consensus around an NEP, but if that’s not possible, you can always submit a competing NEP.</p>
+<p>If you are interested in assuming ownership of an NEP, send a message asking to take over, addressed to both the original author and the NEP editor. If the original author doesn’t respond to email in a timely manner, the NEP editor will make a unilateral decision (it’s not like such decisions can’t be reversed).</p>
+<h2 id="nep-editors">
+  NEP Editors
+  <a class="anchor" href="#nep-editors">#</a>
+</h2>
+<p>The current NEP editors are: 
+<a href="https://github.com/arisac" target="_blank">@arisac</a>, 
+<a href="https://github.com/liuyong5653" target="_blank">@liuyong5653</a>, 
+<a href="https://github.com/weixuefeng" target="_blank">@weixuefeng</a>, 
+<a href="https://github.com/zhouxiqiao" target="_blank">@zhouxiqiao</a></p>
+<h3 id="nep-editors-responsibilities">
+  NEP Editors Responsibilities
+  <a class="anchor" href="#nep-editors-responsibilities">#</a>
+</h3>
+<p>For each new NEP that comes in, an editor does the following:</p>
+<ul>
+<li>Read the NEP to check if it is ready: sound and complete. The ideas must make technical sense, even if they don&rsquo;t seem likely to get to final status.</li>
+<li>The title should accurately describe the content.</li>
+<li>Check the NEP for language (spelling, grammar, sentence structure, etc.), markup (GitHub flavored Markdown), code style etc.</li>
+</ul>
+<p>If the NEP isn&rsquo;t ready, the editor will send it back to the author for revision, with specific instructions.</p>
+<p>Once the NEP is ready for the repository, the NEP editor will:</p>
+<ul>
+<li>
+<p>Assign an NEP number (generally the PR number or, if preferred by the author, the Issue # if there was discussion in the Issues section of this repository about this NEP)</p>
+</li>
+<li>
+<p>Merge the corresponding pull request</p>
+</li>
+<li>
+<p>Send a message back to the NEP author with the next step.</p>
+</li>
+</ul>
+<p>Many NEPs are written and maintained by developers with write access to the Newton codebase. The NEP editors monitor NEP changes, and correct any structure, grammar, spelling, or markup mistakes we see.</p>
+<p>The editors don&rsquo;t pass judgment on NEPs. We merely do the administrative &amp; editorial part.</p>
+<h2 id="about-this-guideline">
+  About This Guideline
+  <a class="anchor" href="#about-this-guideline">#</a>
+</h2>
+<p>This document was derived heavily from 
+<a href="https://github.com/ethereum/EIPs" target="_blank">Ethereum&rsquo;s EIP-1</a> which was derived 
+<a href="https://github.com/bitcoin/bips" target="_blank">Bitcoin&rsquo;s BIP-0001</a> written by Amir Taaki which in turn was derived from 
+<a href="https://www.python.org/dev/peps/" target="_blank">Python&rsquo;s PEP-0001</a> In many places text was simply copied and modified. The authors in the documents mentioned above are not responsible for its use in the Newton Evolution Proposal, and should not be bothered with questions specific to Newton or the NEP. Please direct all comments to the NEP editors.</p>
+<ul>
+<li><strong>2020-04-24</strong>: This NEP Guideline was created and released.</li>
+</ul>
+<h2 id="copyright">
+  Copyright
+  <a class="anchor" href="#copyright">#</a>
+</h2>
+<p>Copyright and related rights waived via 
+<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0</a>.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#contributing-a-nep">Contributing a NEP</a></li>
+    <li><a href="#nep-work-flow">NEP Work Flow</a>
+      <ul>
+        <li><a href="#shepherding-a-nep">Shepherding a NEP</a></li>
+        <li><a href="#nep-process">NEP Process</a></li>
+      </ul>
+    </li>
+    <li><a href="#nep-formats-and-templates">NEP Formats and Templates</a>
+      <ul>
+        <li><a href="#auxiliary-files">Auxiliary Files</a></li>
+        <li><a href="#nep-header-preamble">NEP Header Preamble</a></li>
+        <li><a href="#nep-templates">NEP Templates</a></li>
+      </ul>
+    </li>
+    <li><a href="#transferring-nep-ownership">Transferring NEP Ownership</a></li>
+    <li><a href="#nep-editors">NEP Editors</a>
+      <ul>
+        <li><a href="#nep-editors-responsibilities">NEP Editors Responsibilities</a></li>
+      </ul>
+    </li>
+    <li><a href="#about-this-guideline">About This Guideline</a></li>
+    <li><a href="#copyright">Copyright</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

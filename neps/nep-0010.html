@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Simple Summary #  A standard interface for invoice token.
+Abstract #  The following standard allows for the implementation of a standard API for invoice token within smart contracts. This standard provides basic functionality to issue、reimburse and invalidate invoice token.
+Motivation #  A standard interface allows tax/invoice/financial applications to work with invoice token on NewChain. We provide for simple invoiceToken smart contracts as well as contracts that track an arbitrarily large number of invoice tokens.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Invoice Token Standard (NRC-10)" />
+<meta property="og:description" content="Simple Summary #  A standard interface for invoice token.
+Abstract #  The following standard allows for the implementation of a standard API for invoice token within smart contracts. This standard provides basic functionality to issue、reimburse and invalidate invoice token.
+Motivation #  A standard interface allows tax/invoice/financial applications to work with invoice token on NewChain. We provide for simple invoiceToken smart contracts as well as contracts that track an arbitrarily large number of invoice tokens." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://arisac.github.io/neps-preview/neps/nep-0010.html" />
+
+<title>Invoice Token Standard (NRC-10) | Newton Evolution Proposals</title>
+<link rel="manifest" href="/neps-preview/manifest.json">
+<link rel="icon" href="/neps-preview/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/neps-preview/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/neps-preview/en.search.min.263f14230d258e642a855782319e3651b45efef1623b7f481e91d7d209bd1c6a.js" integrity="sha256-Jj8UIw0ljmQqhVeCMZ42UbRe/vFiO39IHpHX0gm9HGo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/neps-preview"><span>Newton Evolution Proposals</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/neps-preview/neps.html" _target="_blank" rel="noopener">
+        All NEPs
+      </a>
+  </li>
+  
+  <li>
+    <a href="/neps-preview/reviews.html" _target="_blank" rel="noopener">
+        Reviews
+      </a>
+  </li>
+  
+  <li>
+    <a href="http://github.com/newtonproject/NEPs" _target="_blank" rel="noopener">
+        NEPs on Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/neps-preview/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Invoice Token Standard (NRC-10)</strong>
+
+  <label for="toc-control">
+    
+    <img src="/neps-preview/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#simple-summary">Simple Summary</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#specification">Specification</a>
+      <ul>
+        <li><a href="#meta-data">Meta Data</a></li>
+        <li><a href="#interaction--functions">Interaction / Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#test-cases">Test Cases</a></li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#copyright">Copyright</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/neps-preview/neps/nep-0010.html">NEP 10: Invoice Token Standard (NRC-10)</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/neps-preview/category/technical.html">Technical</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/neps-preview/status/draft.html">Draft</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/neps-preview/type/nrc.html">NRC</a>
+  </div>
+  
+
+
+  <a href="https://github.com/newtonproject/NEPs/blob/master/neps/nep-0010.md">View on Github (https://github.com/newtonproject/NEPs/blob/master/neps/nep-0010.md)</a>
+
+  <table><tbody>
+    <tr><th>Author</th><td><a href="mailto:liuyong5653@163.com">Yong Liu</a>, <a href="mailto:evanliuchina@gmail.com">Evan Liu</a></td></tr>
+    <tr><th>Discussions To</th><td><a href="https://github.com/newtonproject/NEPs/issues/10" target="_blank">https://github.com/newtonproject/NEPs/issues/10</a></td></tr>
+    <tr><th>Status</th><td>Draft</td></tr>
+    <tr><th>Category</th><td>Technical</td></tr>
+    <tr><th>Created</th><td>2020-04-29</td></tr>
+    <tr><th>Updated</th><td></td></tr>
+  </tbody></table>
+
+  <p><h2 id="simple-summary">
+  Simple Summary
+  <a class="anchor" href="#simple-summary">#</a>
+</h2>
+<p>A standard interface for invoice token.</p>
+<h2 id="abstract">
+  Abstract
+  <a class="anchor" href="#abstract">#</a>
+</h2>
+<p>The following standard allows for the implementation of a standard API for invoice token within smart contracts. This standard provides basic functionality to issue、reimburse and invalidate invoice token.</p>
+<h2 id="motivation">
+  Motivation
+  <a class="anchor" href="#motivation">#</a>
+</h2>
+<p>A standard interface allows tax/invoice/financial applications to work with invoice token on NewChain. We provide for simple invoiceToken smart contracts as well as contracts that track an arbitrarily large number of invoice tokens.<br>
+The invoice token will curb malpractice and document forgery in taxation and simplify procedures.</p>
+<h2 id="specification">
+  Specification
+  <a class="anchor" href="#specification">#</a>
+</h2>
+<h3 id="meta-data">
+  Meta Data
+  <a class="anchor" href="#meta-data">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Item</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Behaviors/Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Owner</td>
+<td style="text-align:left">can take full control of contract</td>
+<td style="text-align:left">deploy contract, add/remove addmin, set fee</td>
+</tr>
+<tr>
+<td style="text-align:left">Admin</td>
+<td style="text-align:left">manage enterprise</td>
+<td style="text-align:left">authorize/revoke enterprise</td>
+</tr>
+<tr>
+<td style="text-align:left">Enterprise</td>
+<td style="text-align:left">manage token(Invoice)</td>
+<td style="text-align:left">issue/reimburse/invalidate token</td>
+</tr>
+<tr>
+<td style="text-align:left">Fee</td>
+<td style="text-align:left">issue token(invoice) fee</td>
+<td style="text-align:left">uint ISSAC</td>
+</tr>
+<tr>
+<td style="text-align:left">FeeAddress</td>
+<td style="text-align:left">fee withdrawal to this address</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">Invoice</td>
+<td style="text-align:left">contains operatorAddress, sellerTaxNumber, buyerTaxNumber, operatorName, invoiceInfo, status, financial</td>
+<td style="text-align:left">status: positive、negative(reversal)、blank cancellation、cancellation, financial: received、recorded</td>
+</tr>
+</tbody>
+</table>
+<h3 id="interaction--functions">
+  Interaction / Functions
+  <a class="anchor" href="#interaction--functions">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Function</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Behaviors/Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>owner</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">addAdmin</td>
+<td style="text-align:left">add admin to this contract</td>
+<td style="text-align:left">permission: owner</td>
+</tr>
+<tr>
+<td style="text-align:left">removeAdmin</td>
+<td style="text-align:left">remove admin from this contract</td>
+<td style="text-align:left">permission: owner</td>
+</tr>
+<tr>
+<td style="text-align:left">setFee</td>
+<td style="text-align:left">set issue fee，uint ISSAC</td>
+<td style="text-align:left">permission: owner</td>
+</tr>
+<tr>
+<td style="text-align:left">setFeeAddress</td>
+<td style="text-align:left">set issue fee withdrawal address</td>
+<td style="text-align:left">permission: owner</td>
+</tr>
+<tr>
+<td style="text-align:left">withdraw</td>
+<td style="text-align:left">withdrawal to feeAddress</td>
+<td style="text-align:left">permission: owner</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>admin</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">authorize</td>
+<td style="text-align:left">authorized _enterpriseAddress to join contract</td>
+<td style="text-align:left">permission: admin</td>
+</tr>
+<tr>
+<td style="text-align:left">revoke</td>
+<td style="text-align:left">revoke _enterpriseAddress from this contract</td>
+<td style="text-align:left">permission: admin</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>enterprise</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">issue</td>
+<td style="text-align:left">issue new token(Invoice) by msg.sender</td>
+<td style="text-align:left">permission: enterprise</td>
+</tr>
+<tr>
+<td style="text-align:left">issueFrom</td>
+<td style="text-align:left">issue new token(Invoice) by the approved address of the seller</td>
+<td style="text-align:left">permission: enterprise</td>
+</tr>
+<tr>
+<td style="text-align:left">reimburse</td>
+<td style="text-align:left">change Invoice financial status from received to recorded</td>
+<td style="text-align:left">permission: enterprise</td>
+</tr>
+<tr>
+<td style="text-align:left">invalidate</td>
+<td style="text-align:left">change Invoice status from positive to _newStatus</td>
+<td style="text-align:left">permission: enterprise</td>
+</tr>
+<tr>
+<td style="text-align:left">setApprovalForAll</td>
+<td style="text-align:left">enable or disable approval for a third party (&ldquo;operator&rdquo;) to manage all of <code>msg.sender</code>&rsquo;s invoice token</td>
+<td style="text-align:left">permission: enterprise</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Query</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">totalSupply</td>
+<td style="text-align:left">return issue invoices fee total</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">balanceOfSeller</td>
+<td style="text-align:left">return sell invoices count</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">balanceOfBuyer</td>
+<td style="text-align:left">return buy invoices count</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">tokenById</td>
+<td style="text-align:left">return Invoice info</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">getFee</td>
+<td style="text-align:left">return issue invoice fee</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">getFeeSum</td>
+<td style="text-align:left">return contract revenue</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">getFeeBalance</td>
+<td style="text-align:left">return contract balance</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">isApprovedForAll</td>
+<td style="text-align:left">check is authorizationed</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">isExist</td>
+<td style="text-align:left">check token is existed</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="test-cases">
+  Test Cases
+  <a class="anchor" href="#test-cases">#</a>
+</h2>
+<p>The reference implementation contains all the 
+<a href="https://gitlab.newtonproject.org/newton-invoice/newton-invoice-contract/tree/master/test" target="_blank">tests</a>.</p>
+<h2 id="implementation">
+  Implementation
+  <a class="anchor" href="#implementation">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-solidity" data-lang="solidity"><span style="color:#66d9ef">pragma solidity</span> <span style="color:#f92672">^</span><span style="color:#ae81ff">0</span>.<span style="color:#ae81ff">5</span>.<span style="color:#ae81ff">0</span>;
+
+<span style="color:#66d9ef">interface</span> INRC10{
+    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//       function for owner                      //
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">event</span> AdminAdded(<span style="color:#66d9ef">address</span> _admin);
+    <span style="color:#66d9ef">function</span> addAdmin (<span style="color:#66d9ef">address</span> _admin) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> onlyOwner;
+
+    <span style="color:#66d9ef">event</span> AdminRemoved(<span style="color:#66d9ef">address</span> _admin);
+    <span style="color:#66d9ef">function</span> removeAdmin (<span style="color:#66d9ef">address</span> _admin) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> onlyOwner;
+
+    <span style="color:#66d9ef">event</span> SetFeeSeted(<span style="color:#66d9ef">uint</span> _fee);
+    <span style="color:#75715e">//set issue fee，uint ISSAC
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> setFee(<span style="color:#66d9ef">uint</span> _fee) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> onlyOwner;
+
+    <span style="color:#66d9ef">event</span> FeeAddressSeted(<span style="color:#66d9ef">address</span> _feeAddress);
+    <span style="color:#75715e">//set issue fee withdrawal address
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> setFeeAddress(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">payable</span> _feeAddress) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> onlyOwner;
+
+    <span style="color:#66d9ef">event</span> FeeAndFeeAddressSeted(<span style="color:#66d9ef">uint</span> _fee, <span style="color:#66d9ef">address</span> _feeAddress);
+    <span style="color:#66d9ef">function</span> setFeeAndFeeAddress(<span style="color:#66d9ef">uint</span> _fee, <span style="color:#66d9ef">address</span> <span style="color:#66d9ef">payable</span> _feeAddress) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> onlyOwner;
+
+    <span style="color:#66d9ef">event</span> WithdrawalSuccess(<span style="color:#66d9ef">address</span> <span style="color:#66d9ef">indexed</span> _to, <span style="color:#66d9ef">uint</span> _amount);
+    <span style="color:#75715e">//uint ISSAC
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> withdraw(<span style="color:#66d9ef">uint</span> _withraw_amount) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> onlyOwner;
+
+    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//       function for admin                      //
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">event</span> AuthorizeSuccess(<span style="color:#66d9ef">address</span> _admin, <span style="color:#66d9ef">address</span> _enterpriseAddress, <span style="color:#66d9ef">string</span> _taxNumber);
+    <span style="color:#75715e">//authorized enterprise to join contract
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> authorize (<span style="color:#66d9ef">address</span> _enterpriseAddress, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _taxNumber) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span>;
+
+    <span style="color:#66d9ef">event</span> RevokeSuccess(<span style="color:#66d9ef">address</span> _admin, <span style="color:#66d9ef">address</span> _enterpriseAddress);
+    <span style="color:#75715e">//revoke enterprise
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> revoke (<span style="color:#66d9ef">address</span> _enterpriseAddress) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span>;
+
+    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//       function for enterprise                 //
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">event</span> Issued(<span style="color:#66d9ef">address</span> _send, <span style="color:#66d9ef">string</span> _from, <span style="color:#66d9ef">string</span> _to, <span style="color:#66d9ef">bytes32</span> _tokenId);
+    <span style="color:#75715e">//issue Invoice
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> issue(<span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _to, <span style="color:#66d9ef">bytes32</span> _tokenId, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _operatorName, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _invoiceInfo) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">payable</span> <span style="color:#66d9ef">public</span>;
+
+    <span style="color:#66d9ef">function</span> issueFrom(<span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _from, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _to, <span style="color:#66d9ef">bytes32</span> _tokenId, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _operatorName, <span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _invoiceInfo) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">payable</span> <span style="color:#66d9ef">public</span>;
+
+    <span style="color:#66d9ef">event</span> ReimburseSuccess(<span style="color:#66d9ef">address</span> _enterprise, <span style="color:#66d9ef">bytes32</span> _tokenId);
+    <span style="color:#66d9ef">function</span> reimburse(<span style="color:#66d9ef">bytes32</span> _tokenId) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span>;
+
+    <span style="color:#66d9ef">event</span> InvalidateSuccess(<span style="color:#66d9ef">address</span> _enterprise, <span style="color:#66d9ef">bytes32</span> _tokenId, <span style="color:#66d9ef">uint8</span> _newStatus);
+    <span style="color:#66d9ef">function</span> invalidate(<span style="color:#66d9ef">bytes32</span> _tokenId, <span style="color:#66d9ef">uint8</span> _newStatus) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span>;
+
+    <span style="color:#66d9ef">event</span> ApprovalForAllSeted(<span style="color:#66d9ef">address</span> _from, <span style="color:#66d9ef">address</span> _operator, <span style="color:#66d9ef">bool</span> _approved);
+
+    <span style="color:#66d9ef">function</span> setApprovalForAll(<span style="color:#66d9ef">address</span> _operator, <span style="color:#66d9ef">bool</span> _approved) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span>;
+
+    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//       function for all                        //
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">///////////////////////////////////////////////////
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//return issue invoices total
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> totalSupply() <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint</span>);
+
+    <span style="color:#75715e">//return sell invoices count
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> balanceOfSeller(<span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _taxNumber) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint</span>);
+
+    <span style="color:#75715e">// return buy invoices count
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> balanceOfBuyer(<span style="color:#66d9ef">string</span> <span style="color:#66d9ef">memory</span> _taxNumber) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint</span>);
+
+    <span style="color:#75715e">//return issue invoice fee, uint ISSAC
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> getFee()  <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint</span>);
+
+    <span style="color:#75715e">//return contract revenue，uint ISSAC
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> getFeeSum()  <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint</span>);
+
+    <span style="color:#75715e">//return contract balance，uint ISSAC
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> getFeeBalance()  <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">uint</span>);
+
+    <span style="color:#75715e">//return is authorizationed
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> isApprovedForAll(<span style="color:#66d9ef">address</span> _owner, <span style="color:#66d9ef">address</span> _operator)  <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>);
+
+    <span style="color:#75715e">//return invoce info
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> tokenById(<span style="color:#66d9ef">bytes32</span> _tokenId) <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span>;
+
+    <span style="color:#66d9ef">function</span> isExist(<span style="color:#66d9ef">bytes32</span> _tokenId)  <span style="color:#66d9ef">external</span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">view</span> <span style="color:#66d9ef">returns</span> (<span style="color:#66d9ef">bool</span>);
+}
+
+</code></pre></div><p>The 
+<a href="https://gitlab.newtonproject.org/newton-invoice/newton-invoice-contract" target="_blank">reference implementation</a></p>
+<h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<ol>
+<li>ERC-721 Token Standard. <a href="https://eips.ethereum.org/EIPS/eip-721">https://eips.ethereum.org/EIPS/eip-721</a></li>
+</ol>
+<h2 id="copyright">
+  Copyright
+  <a class="anchor" href="#copyright">#</a>
+</h2>
+<p>Copyright and related rights waived via 
+<a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0</a>.</p>
+</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#simple-summary">Simple Summary</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#specification">Specification</a>
+      <ul>
+        <li><a href="#meta-data">Meta Data</a></li>
+        <li><a href="#interaction--functions">Interaction / Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#test-cases">Test Cases</a></li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#references">References</a></li>
+    <li><a href="#copyright">Copyright</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

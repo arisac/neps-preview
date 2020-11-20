@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Status on Newton Evolution Proposals</title>
+    <link>http://arisac.github.io/neps-preview/status.html</link>
+    <description>Recent content in Status on Newton Evolution Proposals</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://arisac.github.io/neps-preview/status/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Draft</title>
+      <link>http://arisac.github.io/neps-preview/status/draft.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://arisac.github.io/neps-preview/status/draft.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Implemented</title>
+      <link>http://arisac.github.io/neps-preview/status/implemented.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://arisac.github.io/neps-preview/status/implemented.html</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
